@@ -1,29 +1,140 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
+<head>  <!-- Here is the information about our webpage (like metadata) -->
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>My Flask Website</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- This forces at render, visible area (viewport) = device actual screen instead of auto -->
+
+    <title>My Flask App</title> <!-- browser tab title-->
 
     <link rel="stylesheet"
-          href="{{ url_for('static', filename='style.css') }}">
+          href="{{ url_for('static', filename='style.css') }}"> <!-- Load this CSS file and use it to style this webpage.-->
 </head>
 
 <body>
 
-    <div class="container">
+    <!-- =========================
+         DESKTOP HEADER
+         ========================= -->
+    <header class="desktop-header">
 
-        <h1>Hello, World!</h1>
+        <div class="logo">
+            MyApp
+        </div>
 
-        <p>
-            This page is rendered by
-            <strong>Flask</strong>
-            using an HTML template.
-        </p>
+        <nav>
+            <a href="#">Dashboard</a>
+            <a href="#">Reports</a>
+            <a href="#">Settings</a>
+        </nav>
 
-        <button>Looks Good!</button>
+        <div class="profile">
+            👤
+        </div>
+
+    </header>
+
+
+    <!-- =========================
+         MOBILE HEADER
+         ========================= -->
+    <header class="mobile-header">
+
+        <button class="menu-button" onclick="toggleSidebar()">
+            ☰
+        </button>
+
+        <div class="logo">
+            MyApp
+        </div>
+
+        <div class="profile">
+            👤
+        </div>
+
+    </header>
+
+
+    <!-- =========================
+         MAIN LAYOUT
+         ========================= -->
+    <div class="app-layout">
+
+        <!-- Sidebar -->
+        <aside id="sidebar" class="sidebar">
+
+            <div class="sidebar-title">
+                Menu
+            </div>
+
+            <a href="#">🏠 Dashboard</a>
+            <a href="#">📊 Reports</a>
+            <a href="#">⚙️ Settings</a>
+
+        </aside>
+
+
+        <!-- Main Content -->
+        <main class="main-content">
+
+            <h1>Dashboard</h1>
+
+            <p>
+                Welcome to your Flask application.
+            </p>
+
+
+            <div class="cards">
+
+                <div class="card">
+                    <h2>Sales</h2>
+                    <p>RM 25,430</p>
+                </div>
+
+                <div class="card">
+                    <h2>Customers</h2>
+                    <p>1,248</p>
+                </div>
+
+                <div class="card">
+                    <h2>Orders</h2>
+                    <p>326</p>
+                </div>
+
+            </div>
+
+        </main>
 
     </div>
+
+
+    <!-- =========================
+         MOBILE BOTTOM NAV
+         ========================= -->
+    <nav class="mobile-bottom-nav">
+
+        <a href="#">
+            <span>🏠</span>
+            <small>Home</small>
+        </a>
+
+        <a href="#">
+            <span>📊</span>
+            <small>Reports</small>
+        </a>
+
+        <a href="#">
+            <span>⚙️</span>
+            <small>Settings</small>
+        </a>
+
+    </nav>
+
+
+    <script>
+        function toggleSidebar() {
+            document.getElementById("sidebar").classList.toggle("open");
+        }
+    </script>
 
 </body>
 </html>
